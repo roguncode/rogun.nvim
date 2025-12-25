@@ -1,15 +1,19 @@
+ --all plugins should be within return {} 
+
 return {
--- Using Lazy
-{
-  "navarasu/onedark.nvim",
-  priority = 1000, -- make sure to load this before all the other start plugins
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
   config = function()
-    require('onedark').setup {
-      style = 'darker'
-    }
-    require('onedark').load()
-  end
+    require("tokyonight").setup({
+      style = "night", --determines the style of tokyonight - storm, night, light 
+      styles = {
+        comments = { italic = true }, --ensure that comments and keywords are always italicized
+        keywords = { italic = true },
+      },
+    })
+
+    vim.cmd([[colorscheme tokyonight]]) -- a vim command to make colorscheme as tokyonight 
+  end,
 }
 
-
-}
